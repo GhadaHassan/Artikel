@@ -17,20 +17,20 @@ class WelcomeController extends Controller
     }
 
     public function index()
-    { 
-        return view('welcome'); 
+    {
+        return view('welcome');
     }
 
     public function search(){
 
-        
+
         // if(request()->route()->parameter('id')){
         //     $array['selectedSkills'] = $this->model->find(request()->route()->parameter('id'))
         //     ->skills()->pluck('skills.id')->toArray();
 
 
     //    $user_id = auth()->user()->id;
-       
+
     //    $articles = Articles::whereHas('categories', function($query) use ($ids)
     // {
     //     $query->whereIn('id', $ids);
@@ -46,12 +46,12 @@ class WelcomeController extends Controller
     //                          ->where('categories.userID',$id); //where categories have user id ==$id
     //                 }
     //                 ->get();
-   
+
      //     $modul = Modul::whereHas('user', function($q) use ($modul_id){
         //         $q->whereIn('modul_id',$modul_id);
         //     })->get();
 
-            
+
         //    dd($modul);
 
         // $artikels = Artikel::join('modul', function($join) use ($user_id){
@@ -61,25 +61,24 @@ class WelcomeController extends Controller
             // dd($artikels);
 
 
-        $modul_id = User::auth()->user()->id->modul()->pluck('modul_id')->toArray();
+        $moduls = auth()->user()->modul()->pluck('moduls.id')->toArray();
 
-       dd($modul_id);
+//       dd($modul_id);
 
         $artikels = Artikel::orderBy('id','DESC');
-        
-        if(request()->has('search') && request()->get('search') != ''){
-            
-            $artikels = Artikel::whereHas('modul', function ($query){
-                
-                $query->where('name', 'LIKE', "%".request()->get('search')."%")
-                               
-                ;
-            })
-            ->orWhere('name', 'LIKE', "%".request()->get('search')."%")->get()
-            ;
-            dd($artikels);
 
-            
+        if(request()->has('search') && request()->get('search') != ''){
+
+            $artikels = Artikel::whereHas('modul', function ($query) use ($moduls){
+
+                $query->whereIn('id' ,$moduls )
+                        ->where('name', 'LIKE', "%".request()->get('search')."%");
+            })
+            ->orWhere('name', 'LIKE', "%".request()->get('search')."%")
+            ->whereIn('modul_id' ,$moduls )->get();
+//            dd($artikels);
+
+
         }
 
         $artikels = $artikels->paginate(4);
