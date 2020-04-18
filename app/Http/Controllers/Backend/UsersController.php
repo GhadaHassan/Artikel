@@ -57,6 +57,11 @@ class UsersController extends BackEndController
    
         $row = $this->model->findOrFail($id);
         $requestArray = $request->all();        
+        if(isset( $requestArray['password'] ) && $requestArray['password'] != ''){
+            $requestArray['password'] = Hash::make($requestArray['password']);
+        }else{
+            unset($requestArray['password']);
+        }
         $row->update($requestArray);
         $this->syncModuls($row, $requestArray);
         return redirect('dashboard/users');
