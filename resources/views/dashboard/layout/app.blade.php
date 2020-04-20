@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="{{url('admin/assets/css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
+  <!-- CSS Files -->
+<link href="/assets/css/material-dashboard.min.css?v=2.1.2" rel="stylesheet" />
 </head>
 
 <body class="dark-edition">

@@ -97,13 +97,17 @@
 
     <div class="row">
         
-        <div class="col-md-6">
+        <div class="col-md-6 ">
             @php $input = 'modul_id'; @endphp
-            <div class="form-group bmd-form-group">
-                <label class="bmd-label-floating">Moduls</label>
+            <div class="form-group bmd-form-group" >
+            <label class="bmd-label-floating" class="material-icons">Moduls</label>
+            
+            <div class="ripple-container"></div></a>
+      
                 <select name="{{ $input }}" class="form-control{{ $errors->has($input) ? ' is-invalid' : '' }}" >
                     @foreach ($moduls as $modul)
-                    <option value="{{ $modul->id }}" {{ isset($row) && $row{$input} == $modul->id ? 'selected' : ''}}>{{$modul->name}}</option>
+                    
+                    <option class="dropdown-menu dropdown-menu-right show" value="{{ $modul->id }}" {{ isset($row) && $row{$input} == $modul->id ? 'selected' : ''}}>{{$modul->name}}</option>
                         
                     @endforeach
                 </select>
@@ -116,4 +120,3 @@
         </div> 
     </div>
    
-
