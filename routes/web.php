@@ -29,6 +29,8 @@ Route::namespace('Backend')->prefix('dashboard')->middleware('admin')->group(fun
 
     Route::resource('artikels','ArtikelsController')->except(['show','delete']);
     Route::delete('artikels/delete/{id}','ArtikelsController@delete')->name('dashboard/artikels.delete');
+    Route::get('/search','ArtikelsController@search');
+
 });
 
 Auth::routes();

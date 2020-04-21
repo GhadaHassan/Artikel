@@ -13,13 +13,6 @@ class ArtikelsController extends BackEndController
     public function __construct(Artikel $model){
         parent::__construct($model);
     }
-        
-    protected function filter($rows){
-        if(request()->has('name') && request()->get('name') != ''){
-            $rows = $rows->where('name', request()->get('name'));
-        }
-        return $rows;
-    }
 
     protected function with(){
         return ['modul','user'];
@@ -47,5 +40,26 @@ class ArtikelsController extends BackEndController
     
         $row->update($request->all());
         return redirect('dashboard/artikels');
+    }
+
+    public function search(){
+
+        $artikels = Artikel::orderBy('id','DESC');
+        
+
+        if(request()->has('search') && request()->get('search') != ''){
+
+            $artikels = Artikel::whereHas('modul', function ($query) {
+
+                $query->where('name', 'LIKE', "%".request()->get('search')."%");
+            })
+            ->orWhere('name', 'LIKE', "%".request()->get('search')."%");
+        //    dd($artikels);
+
+        }
+
+        $artikels = $artikels->get();
+      
+        return view('dashboard/search', compact('artikels'));
     }
 }

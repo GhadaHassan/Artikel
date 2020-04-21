@@ -36,7 +36,7 @@ class UsersController extends BackEndController
             $array['selectedModuls'] = $this->model->find(request()->route()->parameter('id'))
             ->modul()->pluck('moduls.id')->toArray();
 
-            dd($array['selectedModuls']);
+            // dd($array['selectedModuls']);
         }
 
         return $array;

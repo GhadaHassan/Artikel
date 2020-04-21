@@ -1,8 +1,8 @@
 <div class="sidebar" data-color="purple" data-background-color="black" data-image="{{url('admin/assets/img/sidebar-2.jpg')}}">
 
     <div class="logo">
-      <a href="{{url('/dashboard')}}" class="simple-text logo-normal">
-        Creative Tim
+      <a href="{{url('/dashboard/users')}}" class="simple-text logo-normal">
+        Artikel
       </a>
     </div>
     <div class="sidebar-wrapper">
@@ -19,7 +19,7 @@
  
           <a class="nav-link" href="{{url('/dashboard/moduls')}}">
             <i class="material-icons">bubble_chart</i>
-            <p>Moduls</p>
+            <p>Module</p>
           </a>
         </li>
 
@@ -28,7 +28,7 @@
        
           <a class="nav-link" href="{{url('/dashboard/artikels')}}">
             <i class="material-icons">dashboard</i>
-            <p>Artikels</p>
+            <p>Artikel</p>
           </a>
         </li>
 

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <h4 class="card-title ">{{$pageTitle}}</h4>
-                    <p class="card-category">{{$pageDes}}</p>
+                    {{-- <p class="card-category">{{$pageDes}}</p> --}}
                 </div>
                 {{ $addButton }}
             </div>
@@ -15,7 +15,7 @@
         <div class="card-body">
           <div class="table-responsive">
             {{ $table }}
-
+{{--  --}}
             
           </div>
         </div>

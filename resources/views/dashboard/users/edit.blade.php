@@ -19,7 +19,7 @@
             {{ method_field('put')}}
             @include('dashboard.'.$routename.'.form')
             
-            <button type="submit" class="btn btn-primary pull-right">{{$pageTitle}}</button>
+            <button type="submit" class="btn btn-primary pull-right">Nutzer bearbeiten</button>
             <div class="clearfix"></div>
           </form>
         </div>

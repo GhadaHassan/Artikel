@@ -53,7 +53,7 @@
         @php $input = 'old_password'; @endphp
         <div class="col-md-6">
             <div class="form-group bmd-form-group">
-            <label class="bmd-label-floating">Artikel old Kennwort </label>
+            <label class="bmd-label-floating">olt Kennwort </label>
             <input type="text" class="form-control{{ $errors->has($input) ? ' is-invalid' : '' }}" value="{{ isset($row) ? $row->{$input} : '' }}" name="{{$input}}" required autofocus>
             @if ($errors->has($input))
                 <span class="invalid-feedback" role="alert">
@@ -119,4 +119,27 @@
             </div>
         </div> 
     </div>
+
+    {{-- <div class="row">        
+        <div class="col-md-6">
+            @php $input = 'moduls[]'; @endphp
+            <div class="form-group bmd-form-group">
+                <label class="bmd-label-floating">Module</label>
+                <select name="{{ $input }}" class="form-control{{ $errors->has($input) ? ' is-invalid' : '' }}" multiple style="height: 100px">
+                    @foreach ($moduls as $modul)
+                    <option value="{{ $modul->id }}"{{ in_array($modul->id ,$selectedModuls) ? 'selected' : ''}}>{{$modul->name}}</option>
+                        
+                    @endforeach
+                </select>
+                @if ($errors->has($input))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first($input) }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div> 
+          
+         
+    </div> --}}
+    <hr>
    

@@ -23,9 +23,10 @@ class WelcomeController extends Controller
 
     public function search(){
 
+      
         $moduls = auth()->user()->modul()->pluck('moduls.id')->toArray();
 
-//       dd($modul_id);
+    //   dd($moduls);
 
         $artikels = Artikel::orderBy('id','DESC');
 
@@ -37,12 +38,13 @@ class WelcomeController extends Controller
                         ->where('name', 'LIKE', "%".request()->get('search')."%");
             })
             ->orWhere('name', 'LIKE', "%".request()->get('search')."%")
-            ->whereIn('modul_id' ,$moduls );
-        //    dd($artikels);
+            ->whereIn('moduls_artikels.modul_id' ,$moduls )->get();
+           dd($artikels);
 
         }
 
-        $artikels = $artikels->paginate(4);
+        $artikels = $artikels->get();
+      
         return view('search', compact('artikels'));
     }
     

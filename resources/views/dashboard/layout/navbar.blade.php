@@ -11,15 +11,19 @@
         <span class="navbar-toggler-icon icon-bar"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
+
+        <form class="navbar-form" action="{{ url('/dashboard/search') }}">
+          <span class="bmd-form-group"><div class="input-group no-border">
+            <input type="text" name="search" class="form-control" placeholder="Suchen...">
+            <button type="submit" class="btn btn-default btn-round btn-just-icon">
+              <i class="material-icons">search</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div></span>
+        </form>
+
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">
-              <i class="material-icons">notifications</i>
-              <p class="d-lg-none d-md-block">
-                Notifications
-              </p>
-            </a>
-          </li>
+         
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -27,12 +31,12 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-              <a href="/home" class="dropdown-item">Search</a>
+              <a href="/home" class="dropdown-item">Suchen</a>
 
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('Ausloggen') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -1,9 +1,9 @@
 @extends('dashboard.layout.app')
 
-{{-- @php
-   $pageTitle = 'Users Controller';   
-   $pageDes = "Here you can add / edit / delete users"; 
-@endphp --}}
+@php
+   $pageTitle = 'NUTZER VERWALTEN';   
+  //  $pageDes = "Here you can add / edit / delete Nutzer"; 
+@endphp
 
 @section('title')
   {{$pageTitle}}
@@ -16,11 +16,11 @@
 <div class="content">
     <div class="container-fluid">
       
-      @component('dashboard.shared.table',['pageTitle' => $pageTitle, 'pageDes' => $pageDes])
+      @component('dashboard.shared.table',['pageTitle' => $pageTitle])
 
         @slot('addButton')
           <div class="col-md-3 text-center">
-            <a href="/dashboard/{{$routename}}/create" class="btn btn-dark btn-round">Add {{$routename}}</a>
+            <a href="/dashboard/{{$routename}}/create" class="btn btn-dark btn-round">Neuer Nutzer</a>
           </div>
         @endslot 
         
@@ -31,19 +31,19 @@
                 ID
               </th>
               <th>
-                Name
+                Nutzer
               </th>
               <th>
                 E-mail
               </th>
               <th>
-                Moduls
+                Module
               </th>
               <th>
-                Group
+                Gruppe
               </th>
               <th>
-                Control
+                Einstellungen
               </th>
             </thead>
             <tbody>
